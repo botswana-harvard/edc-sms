@@ -1,4 +1,3 @@
-from .outgoing import OutgoingSms
-from .incoming import IncomingSms
-from .delivery_report import SmsDlr
-from .device import Device
+from .base_message import BaseMessage
+from .incoming import Incoming
+from .outgoing import Outgoing
