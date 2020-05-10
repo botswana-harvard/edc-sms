@@ -12,6 +12,7 @@ This little wrapper around APScheduler enables storing persistent jobs in the da
 ## `Installation`
 
 pip install django-apscheduler
+
 pip install edc-sms
 
 ### `Usage`
