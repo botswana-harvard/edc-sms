@@ -4,7 +4,7 @@ from ..classes import SendMessage
 from ..models import Contact, Outgoing
 
 
-class TestDataActionItem(TestCase):
+class TestSendMessage(TestCase):
 
     def setUp(self):
 
@@ -13,17 +13,17 @@ class TestDataActionItem(TestCase):
             subject_identifier='123124',
             first_name='TUser',
             last_name='TUser',
-            mobile_number='')
+            mobile_number='26771522602')
         self.contact2 = Contact.objects.create(
             subject_identifier='123125',
             first_name='TUser2',
             last_name='TUser2',
-            mobile_number='')
+            mobile_number='26775902337')
         self.contact2 = Contact.objects.create(
             subject_identifier='123125',
             first_name='TUser2',
             last_name='TUser2',
-            mobile_number='')
+            mobile_number='26771883071')
         self.text_data = (
             f'Hello+{self.contact.first_name}+'
             f'{self.contact.last_name}.+Have+a+good+day.')
