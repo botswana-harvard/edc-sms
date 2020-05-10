@@ -16,7 +16,7 @@ class OutgoingAdmin(ModelAdminMixin, admin.ModelAdmin):
         (None, {
             'fields': (
                 'subject_identifier',
-                'phone',
+                'mobile_number',
                 'text_data',
                 'status',
                 'action',)}),
@@ -29,10 +29,10 @@ class OutgoingAdmin(ModelAdminMixin, admin.ModelAdmin):
     readonly_fields = ()
 
     list_display = [
-        'created', 'subject_identifier', 'phone',
+        'created', 'subject_identifier', 'mobile_number',
         'status', 'user_created', 'user_modified', 'modified']
 
     list_filter = [
         'status', 'created', 'user_created', 'modified', 'user_modified']
 
-    search_fields = ('subject_identifier',)
+    search_fields = ('subject_identifier', 'mobile_number')

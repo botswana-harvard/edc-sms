@@ -11,5 +11,15 @@ edc_sms.append_item(
                fa_icon='fa-cogs',
                url_name='edc_sms:home_url'))
 
+edc_sms.append_item(
+    NavbarItem(
+        name='contact',
+        title='Contact',
+        label='Contact',
+        fa_icon='fa fa-file-export',
+        url_name=settings.DASHBOARD_URL_NAMES[
+            'contact_listboard_url'],
+        no_url_namespace=no_url_namespace))
+
 
 site_navbars.register(edc_sms)

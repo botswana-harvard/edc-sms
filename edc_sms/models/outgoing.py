@@ -16,11 +16,5 @@ class Outgoing(BaseMessage):
 
     objects = models.Manager()
 
-    def __str__(self):
-        return f'{self.subject_identifier}'
-
-    def natural_key(self):
-        return self.subject_identifier
-
     class Meta:
         app_label = "edc_sms"

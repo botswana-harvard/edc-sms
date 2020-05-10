@@ -2,23 +2,26 @@ from django.contrib import admin
 from edc_model_admin import audit_fieldset_tuple
 
 from ..admin_site import edc_sms_admin
-from ..forms import IncomingForm
-from ..models import Incoming
+from ..forms import ContactForm
+from ..models import Contact
 from .base_admin_model_mixin import ModelAdminMixin
 
 
-@admin.register(Incoming, site=edc_sms_admin)
-class IncomingAdmin(ModelAdminMixin, admin.ModelAdmin):
+@admin.register(Contact, site=edc_sms_admin)
+class ContactAdmin(ModelAdminMixin, admin.ModelAdmin):
 
-    form = IncomingForm
+    form = ContactForm
 
     fieldsets = (
         (None, {
             'fields': (
                 'subject_identifier',
                 'mobile_number',
-                'text_data',
-                'action',)}),
+                'alt_mobile_number',
+                'first_name',
+                'last_name',
+                'dob',
+                'gender')}),
         audit_fieldset_tuple
     )
 
@@ -31,4 +34,5 @@ class IncomingAdmin(ModelAdminMixin, admin.ModelAdmin):
     list_filter = [
         'created', 'user_created', 'modified', 'user_modified']
 
-    search_fields = ('subject_identifier', 'mobile_number')
+    search_fields = (
+        'subject_identifier', 'mobile_number', 'alt_mobile_number')

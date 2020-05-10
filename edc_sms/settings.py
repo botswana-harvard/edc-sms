@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_crypto_fields.apps.AppConfig',
     'django_extensions',
     'simple_history',
+    'django_apscheduler',
     'edc_model_admin.apps.AppConfig',
     'edc_base.apps.AppConfig',
     'edc_device.apps.AppConfig',
@@ -111,6 +112,18 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# dashboards
+DASHBOARD_URL_NAMES = {
+    'contact_listboard_url': 'contact_listboard_url',
+}
+
+LAB_DASHBOARD_URL_NAMES = {}
+
+DASHBOARD_BASE_TEMPLATES = {
+    'listboard_base_template': 'edc_sms/base.html',
+    'contact_listboard_template': 'edc_sms/listboard.html',
+}
 
 
 # Internationalization
