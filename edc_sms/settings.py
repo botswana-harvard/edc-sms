@@ -11,14 +11,28 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import sys
+
+import configparser
+from django.core.management.color import color_style
 
 APP_NAME = 'edc_sms'
 SITE_ID = 40
+
+style = color_style()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ETC_DIR = '/etc/'
+
+
+CONFIG_FILE = f'{APP_NAME}.ini'
+CONFIG_PATH = os.path.join(ETC_DIR, APP_NAME, CONFIG_FILE)
+config = configparser.ConfigParser()
+config.read(CONFIG_PATH)
+BASE_API_URL = config['edc_sms']['base_api_url']
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -124,7 +138,6 @@ DASHBOARD_BASE_TEMPLATES = {
     'listboard_base_template': 'edc_sms/base.html',
     'contact_listboard_template': 'edc_sms/listboard.html',
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
