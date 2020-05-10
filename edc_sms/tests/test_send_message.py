@@ -33,26 +33,24 @@ class TestSendMessage(TestCase):
     def test_send_message(self):
         """Test creation of a outgoing message after sending sms.
         """
-        pass
-#         sms = SendMessage(
-#             mobile_number=self.contact.mobile_number,
-#             message_data=self.text_data)
-#         sms.send()
-#         outgoing_message = Outgoing.objects.all()
-#         self.assertEqual(outgoing_message.count(), 1)
+        sms = SendMessage(
+            mobile_number=self.contact.mobile_number,
+            message_data=self.text_data)
+        sms.send()
+        outgoing_message = Outgoing.objects.all()
+        self.assertEqual(outgoing_message.count(), 1)
 
     def test_send_messages(self):
         """Test creation of a outgoing messages after sending smses.
         """
-        pass
-#         mobile_numbers = []
-#         contacts = Contact.objects.all()
-#         self.assertEqual(contacts.count(), 3)
-#         for contact in contacts:
-#             mobile_numbers.append(contact.mobile_number)
-#         sms = SendMessage(
-#             mobile_numbers=mobile_numbers,
-#             message_data=self.text_data2)
-#         sms.send_multiple_contacts()
-#         outgoing_message = Outgoing.objects.all()
-#         self.assertEqual(outgoing_message.count(), 3)
+        mobile_numbers = []
+        contacts = Contact.objects.all()
+        self.assertEqual(contacts.count(), 3)
+        for contact in contacts:
+            mobile_numbers.append(contact.mobile_number)
+        sms = SendMessage(
+            mobile_numbers=mobile_numbers,
+            message_data=self.text_data2)
+        sms.send_multiple_contacts()
+        outgoing_message = Outgoing.objects.all()
+        self.assertEqual(outgoing_message.count(), 3)
