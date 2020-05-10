@@ -19,9 +19,7 @@ class ContactAdmin(ModelAdminMixin, admin.ModelAdmin):
                 'mobile_number',
                 'alt_mobile_number',
                 'first_name',
-                'last_name',
-                'dob',
-                'gender')}),
+                'last_name')}),
         audit_fieldset_tuple
     )
 

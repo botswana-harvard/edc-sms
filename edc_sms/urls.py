@@ -14,13 +14,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+from django.apps import apps as django_apps
+
+from edc_dashboard import UrlConfig
+
 
 from .admin_site import edc_sms_admin
-from .views import HomeView
+from .views import HomeView, ListBoardView
 
 app_name = 'edc_sms'
+app_config = django_apps.get_app_config(app_name)
 
 urlpatterns = [
     path('admin/', edc_sms_admin.urls),
     path('', HomeView.as_view(), name='home_url'),
 ]
+
+contact_listboard_url_config = UrlConfig(
+    url_name='contact_listboard_url',
+    view_class=ListBoardView,
+    label='contact_listboard',
+    identifier_label='subject_identifier',
+    identifier_pattern=app_config.identifier_pattern)
+
+urlpatterns += contact_listboard_url_config.listboard_urls

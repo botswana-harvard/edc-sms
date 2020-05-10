@@ -41,6 +41,18 @@ Add django_apscheduler and edc_sms.apps.AppConfig to INSTALLED_APPS in your Djan
 		)
 
 		APSCHEDULER_DATETIME_FORMAT =  "N j, Y, f:s a"  # Default
+		
+		DASHBOARD_URL_NAMES = {
+			...
+		    'contact_listboard_url': 'contact_listboard_url',
+		}
+		
+		
+		DASHBOARD_BASE_TEMPLATES = {
+			....
+		    'listboard_base_template': 'edc_sms/base.html',
+		    'contact_listboard_template': 'edc_sms/listboard.html',
+		}
 	
 	`project.conf` This is placed outside the project since it holds sensitive information
 	
