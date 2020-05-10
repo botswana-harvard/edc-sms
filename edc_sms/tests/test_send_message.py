@@ -13,17 +13,17 @@ class TestSendMessage(TestCase):
             subject_identifier='123124',
             first_name='TUser',
             last_name='TUser',
-            mobile_number='26771522602')
+            mobile_number='')
         self.contact2 = Contact.objects.create(
             subject_identifier='123125',
             first_name='TUser2',
             last_name='TUser2',
-            mobile_number='26775902337')
+            mobile_number='')
         self.contact2 = Contact.objects.create(
             subject_identifier='123125',
             first_name='TUser2',
             last_name='TUser2',
-            mobile_number='26771883071')
+            mobile_number='')
         self.text_data = (
             f'Hello+{self.contact.first_name}+'
             f'{self.contact.last_name}.+Have+a+good+day.')
