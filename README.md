@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/github/botswana-harvard/edc-sms.svg?branch=develop)](https://travis-ci.org/github/botswana-harvard/edc-sms) [![Coverage Status](https://coveralls.io/github/botswana-harvard/edc-sms/badge.svg?branch=develop&service=github)](https://coveralls.io/github/botswana-harvard/edc-sms?branch=develop)
+[![Build Status](https://travis-ci.org/botswana-harvard/edc-sms.svg?branch=develop)](https://travis-ci.org/botswana-harvard/edc-sms.svg?branch=develop) [![Coverage Status](https://coveralls.io/repos/github/botswana-harvard/edc-sms/badge.svg?branch=develop)](https://coveralls.io/github/botswana-harvard/edc-sms?branch=develop)
 
 # edc-sms
 
