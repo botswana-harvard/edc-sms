@@ -21,11 +21,18 @@ class SendMessage:
         url = base_api_url + recepient_url_details + message_detais
         return url
 
-    def send(self, message_data=None, recipient_number=None, sms_type=None):
+    def send(
+            self, message_data=None, recipient_number=None,
+            sms_type=None, schedule_datetime=None):
         recipient_number = recipient_number or self.mobile_nuber
         message_data = message_data or self.message_data
         url = self.sms_url(
             recipient_number=recipient_number, message_data=message_data)
+        if schedule_datetime:
+            str_schedule_datetime = schedule_datetime.strftime(
+                "%y-%m-%d+%H:%M:%S")
+            sms_schedule = f'&sendondate={str_schedule_datetime}'
+            url += sms_schedule
         req = urllib.request.Request(url)
         urllib.request.urlopen(req)
         Outgoing.objects.create(

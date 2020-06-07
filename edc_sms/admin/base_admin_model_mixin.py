@@ -5,7 +5,6 @@ from edc_model_admin import (
     ModelAdminFormAutoNumberMixin, ModelAdminAuditFieldsMixin,
     ModelAdminReadOnlyMixin, ModelAdminInstitutionMixin,
     ModelAdminRedirectOnDeleteMixin)
-from edc_model_admin import audit_fieldset_tuple
 
 
 class ModelAdminMixin(ModelAdminNextUrlRedirectMixin,

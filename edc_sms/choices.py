@@ -7,6 +7,7 @@ OUTGOING_SMS_STATUS = (
 SMS_TYPE = (
     ('result', 'Result Message'),
     ('status', 'Status Message'),
+    ('reminder', 'Reminder'),
     ('query', 'Query Message'),
     ('unauth', 'Unauthorized Message'),
     ('received', 'Received Message')

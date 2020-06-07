@@ -13,22 +13,22 @@ class TestSendMessage(TestCase):
             subject_identifier='123124',
             first_name='TUser',
             last_name='TUser',
-            mobile_number='')
+            mobile_number='26771522602')
         self.contact2 = Contact.objects.create(
             subject_identifier='123125',
             first_name='TUser2',
             last_name='TUser2',
-            mobile_number='')
+            mobile_number='26771883071')
         self.contact2 = Contact.objects.create(
             subject_identifier='123125',
             first_name='TUser2',
             last_name='TUser2',
-            mobile_number='')
+            mobile_number='26775902337')
         self.text_data = (
             f'Hello+{self.contact.first_name}+'
             f'{self.contact.last_name}.+Have+a+good+day.')
         self.text_data2 = ('Dear+Our+valued+participants+please+'
-                           'wash+your+hands+and+stay+home.')
+                           'wash+your+hands+and+stay+home.+Coulson+Kgathi+Testing')
 
     def test_send_message(self):
         """Test creation of a outgoing message after sending sms.
