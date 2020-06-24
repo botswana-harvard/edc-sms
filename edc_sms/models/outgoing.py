@@ -14,6 +14,12 @@ class Outgoing(BaseMessage):
         max_length=20,
         choices=OUTGOING_SMS_STATUS)
 
+    schedule_datetime = models.DateTimeField(
+        verbose_name='Schedule datetime',
+        blank=True,
+        null=True,
+        editable=False)
+
     objects = models.Manager()
 
     class Meta:

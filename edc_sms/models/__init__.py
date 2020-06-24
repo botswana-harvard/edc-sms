@@ -8,5 +8,5 @@ from .incoming import Incoming
 from .outgoing import Outgoing
 from .subject_consent_recipent_model_mixin import SubjectConsentRecipient
 
-if 'edc_sms' in settings.APP_NAME and 'makemigrations' not in sys.argv:
+if 'edc_sms' in settings.APP_NAME:
     from ..tests.models import *

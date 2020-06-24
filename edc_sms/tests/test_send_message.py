@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django.test import TestCase
 
 from ..classes import SendMessage
@@ -54,3 +56,20 @@ class TestSendMessage(TestCase):
         sms.send_multiple_contacts()
         outgoing_message = Outgoing.objects.all()
         self.assertEqual(outgoing_message.count(), 3)
+
+    def test_scheduled_messages(self):
+        """Test sending a schedule message.
+        """
+        from pytz import timezone
+        import datetime
+        d = datetime.datetime.now()
+        schedule = d + timedelta(minutes=2)
+        schedule = schedule.astimezone(timezone('Africa/Gaborone'))
+        print(d , '%%%%%%%%)))))))))')
+        print(schedule, 'schedule &&&&&&&&&&&&&&&&&')
+        sms = SendMessage(
+            mobile_number=self.contact.mobile_number,
+            message_data=self.text_data)
+        sms.send(schedule_datetime=schedule)
+        outgoing_message = Outgoing.objects.all()
+        self.assertEqual(outgoing_message.count(), 1)
