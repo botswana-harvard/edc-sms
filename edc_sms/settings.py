@@ -62,7 +62,8 @@ INSTALLED_APPS = [
     'edc_base.apps.AppConfig',
     'edc_device.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
-    'edc_sms.apps.AppConfig'
+    'edc_sms.apps.AppConfig',
+    'django_q'
 ]
 
 MIDDLEWARE = [
@@ -107,6 +108,14 @@ DATABASES = {
     }
 }
 
+
+# Django q configurations
+
+Q_CLUSTER = {
+    'name': 'edc_sms',
+    'retry': 60,
+    'orm': 'default',
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

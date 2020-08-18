@@ -1,4 +1,5 @@
 from .send_message import SendMessage
+from django_q.tasks import schedule
 
 
 class MessageSchedule:
@@ -9,8 +10,11 @@ class MessageSchedule:
             self, message_data=None, recipient_number=None,
             sms_type=None, schedule_datetime=None):
         # Schedule an sms
-        self.send_message().send(
-            message_data=message_data,
-            recipient_number=recipient_number,
-            sms_type=sms_type,
-            schedule_datetime=schedule_datetime)
+        schedule(
+            'edc_sms.classes.SendMessage.send',
+            message_data,
+            recipient_number,
+            sms_type,
+            schedule_datetime,
+            schedule_type='O',
+            next_run=schedule_datetime)
