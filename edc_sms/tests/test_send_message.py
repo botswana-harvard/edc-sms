@@ -65,8 +65,6 @@ class TestSendMessage(TestCase):
         d = datetime.datetime.now()
         schedule = d + timedelta(minutes=2)
         schedule = schedule.astimezone(timezone('Africa/Gaborone'))
-        print(d , '%%%%%%%%)))))))))')
-        print(schedule, 'schedule &&&&&&&&&&&&&&&&&')
         sms = SendMessage(
             mobile_number=self.contact.mobile_number,
             message_data=self.text_data)

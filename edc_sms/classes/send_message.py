@@ -17,27 +17,20 @@ class SendMessage:
             self, recipient_number=None, message_data=None, schedule_datetime=None):
         app_config = django_apps.get_app_config('edc_sms')
         base_api_url = app_config.base_api_url
-        if schedule_datetime:
-            params = {'sendondate': schedule_datetime}
-            schedule = urllib.parse.urlencode(params)
-            base_api_url += schedule + '&'
         recepient_url_details = f'recipient={recipient_number}&'
         message_detais = f'messagetype=SMS:TEXT&messagedata={message_data}'
         url = base_api_url + recepient_url_details + message_detais
-        print(url, '#######################*********************')
         return url
 
     def send(
             self, message_data=None, recipient_number=None,
             sms_type=None, schedule_datetime=None):
-        print(schedule_datetime, 'schedule_datetime SKJLDGKLSDGSJDGHLBJ')
         recipient_number = recipient_number or self.mobile_nuber
         message_data = message_data or self.message_data
         url = self.sms_url(
             recipient_number=recipient_number,
             message_data=message_data,
             schedule_datetime=schedule_datetime)
-        print(url, '##############')
         req = urllib.request.Request(url)
         urllib.request.urlopen(req)
         Outgoing.objects.create(
