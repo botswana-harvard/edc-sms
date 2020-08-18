@@ -25,7 +25,7 @@ class TestSendMessage(TestCase):
             subject_identifier='123125',
             first_name='TUser2',
             last_name='TUser2',
-            mobile_number='26775902337')
+            mobile_number='26774720855')
         self.text_data = (
             f'Hello+{self.contact.first_name}+'
             f'{self.contact.last_name}.+Have+a+good+day.')

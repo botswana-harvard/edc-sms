@@ -20,6 +20,7 @@ class SendMessage:
         recepient_url_details = f'recipient={recipient_number}&'
         message_detais = f'messagetype=SMS:TEXT&messagedata={message_data}'
         url = base_api_url + recepient_url_details + message_detais
+        print(url)
         return url
 
     def send(
