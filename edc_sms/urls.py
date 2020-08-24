@@ -19,6 +19,7 @@ from django.apps import apps as django_apps
 from edc_dashboard import UrlConfig
 
 
+from django.contrib import admin
 from .admin_site import edc_sms_admin
 from .views import HomeView, ListBoardView
 
@@ -28,6 +29,7 @@ app_config = django_apps.get_app_config(app_name)
 urlpatterns = [
     path('admin/', edc_sms_admin.urls),
     path('', HomeView.as_view(), name='home_url'),
+    path('djangoq_admin/', admin.site.urls),
 ]
 
 contact_listboard_url_config = UrlConfig(
