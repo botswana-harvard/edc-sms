@@ -1,4 +1,4 @@
-class SubjectConsentRecipient:
+class SubjectRecipientModelMixin:
 
     @property
     def recipient_number(self):
