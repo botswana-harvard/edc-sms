@@ -1,4 +1,4 @@
-import urllib
+import urllib.request
 
 from django.apps import apps as django_apps
 
