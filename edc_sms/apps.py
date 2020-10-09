@@ -10,6 +10,7 @@ class AppConfig(DjangoAppConfig):
     locator_auto_create_contact = True
     locator_model = 'edc_sms.locator'
     consent_model = 'edc_sms.consent'
+    sms_model = 'edc_sms.sms'
     locator_contact_map_fields = {
         'mobile_number': 'subject_cell',
         'alt_mobile_number': 'subject_cell_alt'}

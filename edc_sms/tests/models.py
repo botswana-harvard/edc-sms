@@ -43,3 +43,31 @@ class Consent(models.Model):
 
     class Meta:
         app_label = "edc_sms"
+
+
+class SMS(models.Model):
+
+    subject_identifier = models.CharField(
+        verbose_name="Subject Identifier",
+        max_length=100,
+        null=True, blank=True,)
+
+    date_time_form_filled = models.DateTimeField(
+        verbose_name='Date SMS form filled',
+        null=True, blank=True)
+
+    next_ap_date = models.DateField(
+        verbose_name='Date of next appointment (referral or return)',
+        null=True, blank=True,)
+
+    date_reminder_sent = models.DateField(
+        verbose_name='Date visit reminder SMS sent',
+        null=True, blank=True,)
+
+    sms_outcome = models.CharField(
+        verbose_name='Outcome of reminder SMS',
+        max_length=50,
+        null=True, blank=True)
+
+    class Meta:
+        app_label = 'edc_sms'

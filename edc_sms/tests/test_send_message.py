@@ -1,15 +1,19 @@
+import time
 from datetime import timedelta
 
 from django.test import TestCase
+from django_q.models import Schedule
 
-from ..classes import SendMessage
-from ..models import Contact, Outgoing
+from ..classes import SendMessage, MessageSchedule
+from ..models import Contact, Outgoing, SMS
+from django.test.utils import tag
 
 
 class TestSendMessage(TestCase):
 
     def setUp(self):
 
+        self.subject_identifier = '12345'
         # Enter a valid mobile number for contact.
         self.contact = Contact.objects.create(
             subject_identifier='123124',
@@ -20,12 +24,12 @@ class TestSendMessage(TestCase):
             subject_identifier='123125',
             first_name='TUser2',
             last_name='TUser2',
-            mobile_number='26771883071')
+            mobile_number='26775414738')
         self.contact2 = Contact.objects.create(
             subject_identifier='123125',
             first_name='TUser2',
             last_name='TUser2',
-            mobile_number='26774720855')
+            mobile_number='26777596236')
         self.text_data = (
             f'Hello+{self.contact.first_name}+'
             f'{self.contact.last_name}.+Have+a+good+day.')
@@ -58,16 +62,28 @@ class TestSendMessage(TestCase):
         self.assertEqual(outgoing_message.count(), 3)
 
     def test_scheduled_messages(self):
-        """Test sending a schedule message.
+        """Test creation of a schedule message.
         """
         from pytz import timezone
         import datetime
         d = datetime.datetime.now()
         schedule = d + timedelta(minutes=2)
         schedule = schedule.astimezone(timezone('Africa/Gaborone'))
+        MessageSchedule().schedule_message(
+            recipient_number=self.contact.mobile_number,
+            message_data=self.text_data,
+            schedule_datetime=schedule)
+        schedule_objs = Schedule.objects.all()
+#         self.assertEqual(schedule_objs.count(), 1)
+        time.sleep(10)
+        self.assertTrue(schedule_objs[0].success)
+
+    def test_sms_obj_created_on_send(self):
+        """Test creation of an sms object after sending sms.
+        """
         sms = SendMessage(
             mobile_number=self.contact.mobile_number,
             message_data=self.text_data)
-        sms.send(schedule_datetime=schedule)
-        outgoing_message = Outgoing.objects.all()
-        self.assertEqual(outgoing_message.count(), 1)
+        sms.send(subject_identifier=self.subject_identifier)
+        sms_obj = SMS.objects.all()
+        self.assertEqual(sms_obj.count(), 1)
