@@ -75,4 +75,4 @@ class SendMessage:
                 date_time_form_filled=get_utcnow(),
                 next_ap_date=next_ap_date,
                 date_reminder_sent=get_utcnow(),
-                sms_outcome='patient_sent_sms_not_received')
+                sms_outcome='sms_sent')
