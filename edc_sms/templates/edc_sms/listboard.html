@@ -1,0 +1,62 @@
+{% extends "edc_dashboard/listboard.html" %}
+{% load admin_urls %}
+{% load edc_base_extras %}
+
+{% block extra-scripts %}
+{{ block.super }}
+
+<script type="text/javascript">
+</script>
+{% endblock extra-scripts %}
+             
+{% block listboard_panel %}
+    <a id="return_to_home" title="go back" class="btn btn-sm btn-default" role="button" 
+        href="/">
+            <i class="fa fa-arrow-left fa-sm"></i> Go Back
+    </a>
+    <a id="add_contact" title="go back" class="btn btn-sm btn-default" role="button" 
+        href="{{ contact_add_url }}?next={{ contact_listboard_url }}">
+            <i class="fas fa-address-book"></i> Add Contact
+    </a>
+{% endblock listboard_panel %}
+{% block listboard_table_button_column %}
+{% endblock listboard_table_button_column %}
+
+{% block listboard_table_header %}
+    <!-- begin results header -->
+    <th>#</th>
+    <th>Subject Identifier</th>
+    <th>Buttons</th>
+    <th>Contact Name</th>
+    <th>Mobile number</th>
+    <th>Alternative Mobile Number</th>
+    <th>Date of Birth</th>
+    <th>Gender</th>
+    <th>User Created</th>
+    <!-- end results header -->
+{% endblock listboard_table_header %}
+
+
+{% block listboard_table_columns %}
+	<td>{{ result.subject_identifier }} </td>
+	<td style="white-space: nowrap">
+    <div class="btn-group">
+    <a title="Edit data action item" role="button" 
+       class="btn btn-default btn-sm"
+           href="{{ result.href }}">
+        <i class="fa fa-pencil-alt fa-sm"></i>
+    </a>
+    {% if result.subject_identifier %}
+      <a id="btn-subject-dashboard-{{result.subject_identifier}}" class="btn btn-primary btn-sm" role="button"   
+     title="Go to subject's dashboard" href="{% url subject_dashboard_url result.subject_identifier %}">
+     <i class="far fa-user-circle fa-sm"></i> Dashboard  <i class="fa fa-share"></i></a>
+     {% endif %}
+    </div>
+	</td>
+	<td>{{ result.first_name }} {{result.last_name}} </td>
+	<td>{{ result.mobile_number }} </td>
+	<td>{{ result.alt_mobile_number }} </td>
+	<td>{{result.dob}}</td>
+	<td>{{result.gender}}</td>
+    <td nowrap>{{ result.user_created }}</td>
+{% endblock listboard_table_columns %}
